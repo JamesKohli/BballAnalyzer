@@ -29,10 +29,12 @@ public class TeamSeasonReader {
     public List<Game> read(Team t, int year) {
 
         results = new ArrayList<Game>();
+        //build the name of the csv file we want to read
         String file = "/" + t.toString() + "_" + year + fileType;
 
         try {
-            csvReader = new CSVReader(new InputStreamReader(getClass().getResourceAsStream(file)));
+            //read in the initial csv file
+            csvReader = new CSVReader(new FileReader(file));
             String [] nextLine;
             while ((nextLine = csvReader.readNext()) != null) {
                 parseLine(nextLine, t);
@@ -43,6 +45,8 @@ public class TeamSeasonReader {
         return results;
     }
 
+    /**Read a line of a team statistic csv file. If it's valid, turn it into a game. An example CSV file could be found here:
+     * http://www.basketball-reference.com/teams/SAS/2014_games.html#teams_games::none*/
     private void parseLine(String[] nextLine, Team t) {
         if (nextLine[0].equals("G") | nextLine[3].equals("@")){return;}
 

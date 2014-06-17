@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by James on 6/17/2014.
  */
-public class ReaderTest {
+public class Tests {
 
     @Test
     public void testTeamSeasonCSVRead(){
@@ -17,6 +17,15 @@ public class ReaderTest {
         List<Game> results = tsr.read(Team.SAS, 2014);
 
         assertEquals(41, results.size());
+    }
+
+    @Test
+    public void testTeamScraper(){
+
+        TeamSeasonScraper tss = new TeamSeasonScraper();
+
+        tss.scrape(Team.OKC, 2014);
+
     }
 
 }
