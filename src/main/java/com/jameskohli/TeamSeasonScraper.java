@@ -38,7 +38,7 @@ public class TeamSeasonScraper {
 
                 String csv = page.getElementById("csv_teams_games").asText();
 
-                String[] lines = csv.split(",\\s|Notes\\s");
+                String[] lines = csv.split(",\\s|,Notes\\s");
 
                 PrintWriter pw = new PrintWriter("TeamSeasons/" + t + "_" + year + ".csv");
                 for (String s : lines) {

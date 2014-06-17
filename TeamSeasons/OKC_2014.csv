@@ -1,4 +1,4 @@
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 1,Wed Oct 30 2013,Box Score,@,Utah Jazz,W,,101,98,1,0,W 1
 2,Fri Nov 1 2013,Box Score,@,Minnesota Timberwolves,L,,81,100,1,1,L 1
 3,Sun Nov 3 2013,Box Score,,Phoenix Suns,W,,103,96,2,1,W 1
@@ -19,7 +19,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 18,Fri Dec 6 2013,Box Score,@,New Orleans Pelicans,W,,109,95,14,4,W 1
 19,Sun Dec 8 2013,Box Score,,Indiana Pacers,W,,118,94,15,4,W 2
 20,Tue Dec 10 2013,Box Score,@,Atlanta Hawks,W,,101,92,16,4,W 3
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 21,Wed Dec 11 2013,Box Score,@,Memphis Grizzlies,W,,116,100,17,4,W 4
 22,Fri Dec 13 2013,Box Score,,Los Angeles Lakers,W,,122,97,18,4,W 5
 23,Sun Dec 15 2013,Box Score,,Orlando Magic,W,,101,98,19,4,W 6
@@ -40,7 +40,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 38,Tue Jan 14 2014,Box Score,@,Memphis Grizzlies,L,,87,90,28,10,L 1
 39,Thu Jan 16 2014,Box Score,@,Houston Rockets,W,,104,92,29,10,W 1
 40,Fri Jan 17 2014,Box Score,,Golden State Warriors,W,,127,121,30,10,W 2
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 41,Sun Jan 19 2014,Box Score,,Sacramento Kings,W,,108,93,31,10,W 3
 42,Tue Jan 21 2014,Box Score,,Portland Trail Blazers,W,,105,97,32,10,W 4
 43,Wed Jan 22 2014,Box Score,@,San Antonio Spurs,W,,111,105,33,10,W 5
@@ -61,7 +61,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 58,Wed Feb 26 2014,Box Score,,Cleveland Cavaliers,L,,104,114,43,15,L 3
 59,Fri Feb 28 2014,Box Score,,Memphis Grizzlies,W,,113,107,44,15,W 1
 60,Sun Mar 2 2014,Box Score,,Charlotte Bobcats,W,,116,99,45,15,W 2
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 61,Tue Mar 4 2014,Box Score,,Philadelphia 76ers,W,,125,92,46,15,W 3
 62,Thu Mar 6 2014,Box Score,@,Phoenix Suns,L,,122,128,46,16,L 1
 63,Sun Mar 9 2014,Box Score,@,Los Angeles Lakers,L,,110,114,46,17,L 2
@@ -82,6 +82,6 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 78,Wed Apr 9 2014,Box Score,@,Los Angeles Clippers,W,,107,101,57,21,W 2
 79,Fri Apr 11 2014,Box Score,,New Orleans Pelicans,W,,116,94,58,21,W 3
 80,Sun Apr 13 2014,Box Score,@,Indiana Pacers,L,,97,102,58,22,L 1
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 81,Mon Apr 14 2014,Box Score,@,New Orleans Pelicans,L,,89,101,58,23,L 2
 82,Wed Apr 16 2014,Box Score,,Detroit Pistons,W,,112,111,59,23,W 1,

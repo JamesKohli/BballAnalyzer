@@ -1,4 +1,4 @@
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 1,Wed Oct 30 2013,Box Score,,Oklahoma City Thunder,L,,98,101,0,1,L 1
 2,Fri Nov 1 2013,Box Score,@,Phoenix Suns,L,,84,87,0,2,L 2
 3,Sat Nov 2 2013,Box Score,,Houston Rockets,L,,93,104,0,3,L 3
@@ -19,7 +19,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 18,Sat Nov 30 2013,Box Score,@,Phoenix Suns,W,,112,104,3,15,W 1
 19,Mon Dec 2 2013,Box Score,,Houston Rockets,W,,109,103,4,15,W 2
 20,Wed Dec 4 2013,Box Score,,Indiana Pacers,L,,86,95,4,16,L 1
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 21,Fri Dec 6 2013,Box Score,@,Portland Trail Blazers,L,,98,130,4,17,L 2
 22,Sat Dec 7 2013,Box Score,,Sacramento Kings,L,OT,102,112,4,18,L 3
 23,Mon Dec 9 2013,Box Score,,Portland Trail Blazers,L,,94,105,4,19,L 4
@@ -40,7 +40,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 38,Fri Jan 10 2014,Box Score,,Cleveland Cavaliers,L,,102,113,12,26,L 1
 39,Mon Jan 13 2014,Box Score,,Denver Nuggets,W,,118,103,13,26,W 1
 40,Wed Jan 15 2014,Box Score,@,San Antonio Spurs,L,,105,109,13,27,L 1
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 41,Fri Jan 17 2014,Box Score,@,Detroit Pistons,W,,110,89,14,27,W 1
 42,Sat Jan 18 2014,Box Score,@,Minnesota Timberwolves,L,,72,98,14,28,L 1
 43,Tue Jan 21 2014,Box Score,,Minnesota Timberwolves,L,,97,112,14,29,L 2
@@ -61,7 +61,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 58,Fri Feb 28 2014,Box Score,@,Cleveland Cavaliers,L,,79,99,21,37,L 1
 59,Sun Mar 2 2014,Box Score,@,Indiana Pacers,L,,91,94,21,38,L 2
 60,Mon Mar 3 2014,Box Score,@,Milwaukee Bucks,L,,88,114,21,39,L 3
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 61,Wed Mar 5 2014,Box Score,@,Washington Wizards,L,,91,104,21,40,L 4
 62,Fri Mar 7 2014,Box Score,@,New York Knicks,L,,81,108,21,41,L 5
 63,Sat Mar 8 2014,Box Score,@,Philadelphia 76ers,W,,104,92,22,41,W 1
@@ -82,6 +82,6 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 78,Tue Apr 8 2014,Box Score,,Dallas Mavericks,L,,83,95,24,54,L 2
 79,Fri Apr 11 2014,Box Score,,Portland Trail Blazers,L,,99,111,24,55,L 3
 80,Sat Apr 12 2014,Box Score,@,Denver Nuggets,L,,94,101,24,56,L 4
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 81,Mon Apr 14 2014,Box Score,,Los Angeles Lakers,L,,104,119,24,57,L 5
 82,Wed Apr 16 2014,Box Score,@,Minnesota Timberwolves,W,2OT,136,130,25,57,W 1,

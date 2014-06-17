@@ -1,4 +1,4 @@
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 1,Wed Oct 30 2013,Box Score,,Miami Heat,W,,114,110,1,0,W 1
 2,Fri Nov 1 2013,Box Score,@,Washington Wizards,W,,109,102,2,0,W 2
 3,Sat Nov 2 2013,Box Score,,Chicago Bulls,W,,107,104,3,0,W 3
@@ -19,7 +19,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 18,Sun Dec 1 2013,Box Score,@,Detroit Pistons,L,,100,115,6,12,L 4
 19,Tue Dec 3 2013,Box Score,,Orlando Magic,W,2OT,126,125,7,12,W 1
 20,Fri Dec 6 2013,Box Score,@,Charlotte Bobcats,L,,88,105,7,13,L 1
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 21,Sat Dec 7 2013,Box Score,,Denver Nuggets,L,,92,103,7,14,L 2
 22,Mon Dec 9 2013,Box Score,,Los Angeles Clippers,L,,83,94,7,15,L 3
 23,Wed Dec 11 2013,Box Score,@,Minnesota Timberwolves,L,,99,106,7,16,L 4
@@ -40,7 +40,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 38,Wed Jan 15 2014,Box Score,,Charlotte Bobcats,W,,95,92,13,25,W 1
 39,Fri Jan 17 2014,Box Score,,Miami Heat,L,,86,101,13,26,L 1
 40,Sat Jan 18 2014,Box Score,@,Chicago Bulls,L,,78,103,13,27,L 2
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 41,Mon Jan 20 2014,Box Score,@,Washington Wizards,L,,99,107,13,28,L 3
 42,Wed Jan 22 2014,Box Score,@,New York Knicks,W,,110,106,14,28,W 1
 43,Fri Jan 24 2014,Box Score,,Toronto Raptors,L,,95,104,14,29,L 1
@@ -61,7 +61,7 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 58,Wed Feb 26 2014,Box Score,,Orlando Magic,L,,90,101,15,43,L 12
 59,Sat Mar 1 2014,Box Score,,Washington Wizards,L,,103,122,15,44,L 13
 60,Sun Mar 2 2014,Box Score,@,Orlando Magic,L,,81,92,15,45,L 14
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 61,Tue Mar 4 2014,Box Score,@,Oklahoma City Thunder,L,,92,125,15,46,L 15
 62,Sat Mar 8 2014,Box Score,,Utah Jazz,L,,92,104,15,47,L 16
 63,Mon Mar 10 2014,Box Score,@,New York Knicks,L,,110,123,15,48,L 17
@@ -82,6 +82,6 @@ G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
 78,Wed Apr 9 2014,Box Score,@,Toronto Raptors,L,,114,125,17,61,L 2
 79,Fri Apr 11 2014,Box Score,@,Memphis Grizzlies,L,,95,117,17,62,L 3
 80,Sat Apr 12 2014,Box Score,@,Charlotte Bobcats,L,,105,111,17,63,L 4
-G,Date,,,Opponent,,,Tm,Opp,W,L,Streak,
+G,Date,,,Opponent,,,Tm,Opp,W,L,Streak
 81,Mon Apr 14 2014,Box Score,,Boston Celtics,W,,113,108,18,63,W 1
 82,Wed Apr 16 2014,Box Score,@,Miami Heat,W,,100,87,19,63,W 2,
