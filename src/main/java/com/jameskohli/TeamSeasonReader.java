@@ -30,7 +30,7 @@ public class TeamSeasonReader {
 
         results = new ArrayList<Game>();
         //build the name of the csv file we want to read
-        String file = "/" + t.toString() + "_" + year + fileType;
+        String file = "/" + year + "_" + t + fileType;
 
         try {
             //read in the initial csv file

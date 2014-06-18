@@ -2,6 +2,8 @@ package com.jameskohli;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by James on 6/17/2014.
@@ -9,19 +11,19 @@ import org.slf4j.LoggerFactory;
 public class BballAnalyzer {
 
     private static Logger logger = LoggerFactory.getLogger(BballAnalyzer.class);
+    private static List<Integer> years = new ArrayList<Integer>();
 
 
     public static void main(String[] args) {
 
         logger.info("Starting analyzer");
-        int year = 2014;
         boolean download = false;
 
         for (int i = 0; i < args.length; i++) {
 
             if (args[i].equals("-y")) {
-                logger.info("Year set to " + year);
-                year = Integer.parseInt(args[i + 1]);
+                logger.info("Adding year " + Integer.parseInt(args[i+1]));
+                years.add(Integer.parseInt(args[i + 1]));
             }
             if (args[i].equals("-d")) {
                 logger.info("Downloads enabled");
@@ -29,8 +31,15 @@ public class BballAnalyzer {
             }
         }
 
+        if (years.isEmpty()){
+            years.add(2014);
+        }
+
         if (download){
-            runDownloads(year);
+            for (int year : years) {
+                logger.info("Starting year " + year);
+                runDownloads(year);
+            }
         }
     }
 

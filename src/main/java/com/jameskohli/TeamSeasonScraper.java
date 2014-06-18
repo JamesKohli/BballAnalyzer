@@ -30,7 +30,7 @@ public class TeamSeasonScraper {
 
                 Element table = doc.getElementById("teams_games");
 
-                PrintWriter pw = new PrintWriter("TeamSeasons/" + t + "_" + year + ".csv");
+                PrintWriter pw = new PrintWriter("TeamSeasons/" + year + "_" + t + ".csv");
                 for (Element tr : table.select("tr")) {
                     for (Element td : tr.select("td")){
                         pw.print(td.text().replace(",", "") + ",");
