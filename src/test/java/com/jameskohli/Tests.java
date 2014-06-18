@@ -24,7 +24,7 @@ public class Tests {
 
         TeamSeasonScraper tss = new TeamSeasonScraper();
 
-        tss.scrape(Team.OKC, 2014);
+        tss.scrape(Team.ATL, 2014);
 
     }
 

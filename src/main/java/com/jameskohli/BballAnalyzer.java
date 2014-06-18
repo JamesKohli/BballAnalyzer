@@ -41,6 +41,7 @@ public class BballAnalyzer {
             tss.scrape(t, year);
             try {
                 logger.info("Completed team " + t);
+                //Pause for a little to be good web citizens, don't want to hit the site with many requests at a time
                 Thread.sleep(30000);
             } catch (InterruptedException e) {
                 e.printStackTrace();

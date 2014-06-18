@@ -34,7 +34,9 @@ public enum Team {
     SAS,
     WAS,
     PHI,
-    IND;
+    IND,
+    BRK,
+    PHO;
 
     public static Team convertLongName (String ln) throws TeamNotFoundException {
         switch (ln) {
@@ -53,8 +55,8 @@ public enum Team {
             case "Houston Rockets": return Team.HOU;
             case "Golden State Warriors": return Team.GSW;
             case "Portland Trail Blazers": return Team.POR;
-            case "Phoenix Suns": return Team.PHX;
-            case "Brooklyn Nets": return Team.BKN;
+            case "Phoenix Suns": return Team.PHO;
+            case "Brooklyn Nets": return Team.BRK;
             case "Oklahoma City Thunder": return Team.OKC;
             case "Sacramento Kings": return Team.SAC;
             case "Toronto Raptors": return Team.TOR;

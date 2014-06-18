@@ -1,49 +1,46 @@
 package com.jameskohli;
 
-import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.CSVWriter;
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.DomElement;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlSpan;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintWriter;
 
 /**
  * Created by James on 6/17/2014.
  */
 public class TeamSeasonScraper {
 
-    final private WebClient webClient = new WebClient(BrowserVersion.FIREFOX_24);
-    private HtmlPage page;
+    int tries = 0;
+    final int maxTries = 5;
+
     Logger logger = LoggerFactory.getLogger(TeamSeasonScraper.class);
 
+    //** scrape a basketball reference season results page for a given team and year*/
     public void scrape(Team t, int year){
         String url = "http://www.basketball-reference.com/teams/" + t + "/" + year + "_games.html";
-        int tries = 0;
-        int maxTries = 5;
 
+        tries = 0;
         while (tries < maxTries) {
             try {
                 logger.info("Getting page " + url);
-                page = webClient.getPage(url);
-                final HtmlSpan span = (HtmlSpan) page.getElementById("").getByXPath("div[@class='table_heading_text']/span[@tip='Convert the table below to comma-separated values']").get(0);
-                page = span.click();
+                Document doc = Jsoup.connect(url).get();
 
-                String csv = page.getElementById("csv_teams_games").asText();
-
-                String[] lines = csv.split(",\\s|,Notes\\s|,");
+                Element table = doc.getElementById("teams_games");
 
                 PrintWriter pw = new PrintWriter("TeamSeasons/" + t + "_" + year + ".csv");
-                for (String s : lines) {
-                    pw.println(s);
+                for (Element tr : table.select("tr")) {
+                    for (Element td : tr.select("td")){
+                        pw.print(td.text() + ",");
+                    }
+                    for (Element th : tr.select("th")){
+                        pw.print(th.text() + ",");
+                    }
+                    pw.println();
                 }
+
                 pw.close();
                 break;
 
