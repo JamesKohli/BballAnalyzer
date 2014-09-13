@@ -21,43 +21,23 @@ public class Tests {
 
     @Test
     public void testTeamScraper(){
-
         TeamSeasonScraper tss = new TeamSeasonScraper();
-
         tss.scrape(Team.ATL, 2014);
-
-    }
-
-    @Test
-    public void testEloCalculatorHomeWin(){
-        EloCalculator calc = new EloCalculator(1400, 1400, true);
-
-        assertEquals(calc.getRn1(), 1410);
-        assertEquals(calc.getRn2(), 1385);
-    }
-
-    @Test
-    public void testEloCalculatorHomeLoss(){
-        EloCalculator calc = new EloCalculator(1400, 1400, false);
-
-        assertEquals(calc.getRn1(), 1380);
-        assertEquals(calc.getRn2(), 1415);
     }
 
     @Test
     public void testEloCalculatorHomeWinUneven(){
         EloCalculator calc = new EloCalculator(1450, 1350, true);
 
-        assertEquals(calc.getRn1(), 1457);
-        assertEquals(calc.getRn2(), 1339);
+        assertEquals(1452, calc.getRn1());
+        assertEquals(1346, calc.getRn2());
     }
 
     @Test
     public void testEloCalculatorHomeLossUneven(){
         EloCalculator calc = new EloCalculator(1350, 1450, false);
 
-        assertEquals(calc.getRn1(), 1335);
-        assertEquals(calc.getRn2(), 1460);
+        assertEquals(1345, calc.getRn1());
+        assertEquals(1453, calc.getRn2());
     }
-
 }

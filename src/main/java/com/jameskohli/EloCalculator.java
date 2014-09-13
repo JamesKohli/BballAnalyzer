@@ -14,7 +14,7 @@ package com.jameskohli;
  */
 public class EloCalculator {
 
-    private static final int K = 30;
+    private static final int K = 10;
     private int rn1;
     private int rn2;
 
