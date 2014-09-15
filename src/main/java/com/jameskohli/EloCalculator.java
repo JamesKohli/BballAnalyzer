@@ -40,7 +40,7 @@ public class EloCalculator {
     //dr = difference in ratings + home field advantage (100?)
     private int calculate(int ro1, int ro2, boolean isHome, boolean victory){
         double dr = ro1 - ro2;
-        if (isHome) {dr += 100;}
+        if (isHome) {dr += 50;}
 
         double we = 1 / ( Math.pow(10,-dr/400) + 1);
 
