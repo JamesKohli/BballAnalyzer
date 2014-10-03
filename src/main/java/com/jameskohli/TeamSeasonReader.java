@@ -1,6 +1,7 @@
 package com.jameskohli;
 
 import au.com.bytecode.opencsv.CSVReader;
+import org.hibernate.Session;
 import org.joda.time.DateTime;
 import org.joda.time.Years;
 import org.joda.time.format.DateTimeFormat;
@@ -49,7 +50,6 @@ public class TeamSeasonReader {
      * http://www.basketball-reference.com/teams/SAS/2014_games.html#teams_games::none*/
     private void parseLine(String[] nextLine, Team t) {
         if (nextLine[0].equals("G") | nextLine[3].equals("@")){return;}
-
         try {
             Team awayTeam = Team.convertLongName(nextLine[4]);
             DateTimeFormatter fmt = DateTimeFormat.forPattern("EEE MMM dd yyyy");

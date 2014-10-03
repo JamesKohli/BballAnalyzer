@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.jameskohli">
+    <class name="Game" table="Games">
+        <id name="id" column="GameID">
+            <generator class="identity"/>
+        </id>
+        <property name="dateTime" type="timestamp" column="EventDate"/>
+        <property name="homeScore" type="integer" column="HomeScore"/>
+        <property name="awayScore" type="integer" column="AwayScore"/>
+    </class>
+</hibernate-mapping>

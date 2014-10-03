@@ -1,5 +1,7 @@
 package com.jameskohli;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
@@ -12,12 +14,14 @@ public class BballAnalyzer {
 
     private static Logger logger = LoggerFactory.getLogger(BballAnalyzer.class);
     private static List<Integer> years = new ArrayList<Integer>();
+    static boolean download = false;
+    //Our hibernate sesssion
+    public static SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
 
     public static void main(String[] args) {
 
         logger.info("Starting analyzer");
-        boolean download = false;
 
         for (int i = 0; i < args.length; i++) {
 
@@ -35,10 +39,19 @@ public class BballAnalyzer {
             years.add(2014);
         }
 
+        //download the appropriate years
         if (download){
             for (int year : years) {
                 logger.info("Starting year " + year);
                 runDownloads(year);
+            }
+        }
+
+        //save the appropriate years to the database
+        for (int year : years){
+            TeamSeasonReader tsr = new TeamSeasonReader();
+            for (Team t : Team.values()) {
+                List<Game> games = tsr.read(t, year);
             }
         }
     }

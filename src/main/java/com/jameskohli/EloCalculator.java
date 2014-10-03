@@ -1,5 +1,8 @@
 package com.jameskohli;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created by James on 9/13/2014.
  * This calculates the ELO changes for a match
@@ -14,7 +17,9 @@ package com.jameskohli;
  */
 public class EloCalculator {
 
+    Logger logger = LoggerFactory.getLogger(EloCalculator.class);
     private static final int K = 10;
+    private static final int HOME_FIELD_ADVANTAGE = 50;
     private int rn1;
     private int rn2;
 
@@ -25,7 +30,7 @@ public class EloCalculator {
      * @param homeVictory true if first team won, false if not
      */
     public EloCalculator(int homeElo, int awayElo, boolean homeVictory){
-
+        logger.info("Calculating ELO for game %n %n %s", homeElo, awayElo, homeVictory);
         rn1 = calculate(homeElo, awayElo, true, homeVictory);
         rn2 = calculate(awayElo, homeElo, false, !homeVictory);
     }
@@ -40,7 +45,7 @@ public class EloCalculator {
     //dr = difference in ratings + home field advantage (100?)
     private int calculate(int ro1, int ro2, boolean isHome, boolean victory){
         double dr = ro1 - ro2;
-        if (isHome) {dr += 50;}
+        if (isHome) {dr += HOME_FIELD_ADVANTAGE;}
 
         double we = 1 / ( Math.pow(10,-dr/400) + 1);
 
