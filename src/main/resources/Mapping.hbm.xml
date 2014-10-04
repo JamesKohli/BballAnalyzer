@@ -11,5 +11,17 @@
         <property name="dateTime" type="org.joda.time.contrib.hibernate.PersistentDateTime" column="EventDate"/>
         <property name="homeScore" type="integer" column="HomeScore"/>
         <property name="awayScore" type="integer" column="AwayScore"/>
+        <property name="homeTeam" column="HomeTeam">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.jameskohli.Team</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property name="awayTeam" column="AwayTeam">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.jameskohli.Team</param>
+                <param name="type">12</param>
+            </type>
+        </property>
     </class>
 </hibernate-mapping>
