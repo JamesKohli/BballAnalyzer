@@ -5,8 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by James on 6/17/2014.
@@ -18,6 +21,9 @@ public class BballAnalyzer {
     static boolean download = false;
     //Our hibernate sesssion
     public static SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
+    //the list of teams
+    static Map<TeamName, Team> teams = new HashMap<TeamName, Team>();
 
 
     public static void main(String[] args) {
@@ -40,6 +46,21 @@ public class BballAnalyzer {
             years.add(2014);
         }
 
+        //Create and save the list of teams
+        teams = Team.createTeamMap();
+        logger.info("Persisiting teams to database");
+        for (Team t: teams.values()){
+                try{
+                    Session s = sessionFactory.openSession();
+                    s.beginTransaction();
+                    s.save(t);
+                    s.getTransaction().commit();
+                    s.close();}
+                catch (Exception e){
+                    logger.error("Error saving team " + t, e);
+                }
+        }
+
         //download the appropriate years
         if (download){
             for (int year : years) {
@@ -51,14 +72,18 @@ public class BballAnalyzer {
         //save the appropriate years to the database
         for (int year : years){
             TeamSeasonReader tsr = new TeamSeasonReader();
-            for (Team t : Team.values()) {
-                List<Game> games = tsr.read(t, year);
+            for (TeamName t : TeamName.values()) {
+                List<Game> games = tsr.read(t, year, teams);
                 for (Game g : games){
-                    Session s = sessionFactory.openSession();
-                    s.beginTransaction();
-                    s.save(g);
-                    s.getTransaction().commit();
-                    s.close();
+                    try{
+                        Session s = sessionFactory.openSession();
+                        s.beginTransaction();
+                        s.save(g);
+                        s.getTransaction().commit();
+                        s.close();}
+                    catch (Exception e){
+                        logger.error("Error saving game " + g, e);
+                    }
                 }
             }
         }
@@ -66,7 +91,7 @@ public class BballAnalyzer {
 
     private static void runDownloads(int year){
         TeamSeasonScraper tss = new TeamSeasonScraper();
-        for (Team t : Team.values()){
+        for (TeamName t : TeamName.values()){
             logger.info("Downloading team " + t);
             tss.scrape(t, year);
             try {

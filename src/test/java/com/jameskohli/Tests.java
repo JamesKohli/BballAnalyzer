@@ -14,7 +14,7 @@ public class Tests {
     public void testTeamSeasonCSVRead(){
 
         TeamSeasonReader tsr = new TeamSeasonReader();
-        List<Game> results = tsr.read(Team.SAS, 2014);
+        List<Game> results = tsr.read(TeamName.SAS, 2014, Team.createTeamMap());
 
         assertEquals(41, results.size());
     }
@@ -22,7 +22,7 @@ public class Tests {
     @Test
     public void testTeamScraper(){
         TeamSeasonScraper tss = new TeamSeasonScraper();
-        tss.scrape(Team.ATL, 2014);
+        tss.scrape(TeamName.ATL, 2014);
     }
 
     @Test

@@ -4,24 +4,30 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.jameskohli">
-    <class name="Game" table="Games">
+    <class name="Game" table="Game">
         <id name="id" column="GameID">
             <generator class="identity"/>
         </id>
         <property name="dateTime" type="org.joda.time.contrib.hibernate.PersistentDateTime" column="EventDate"/>
         <property name="homeScore" type="integer" column="HomeScore"/>
         <property name="awayScore" type="integer" column="AwayScore"/>
-        <property name="homeTeam" column="HomeTeam">
+        <many-to-one name="homeTeam" class="Team" lazy="false" cascade="persist">
+            <column name="homeTeamID" sql-type="int" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="awayTeam" class="Team" lazy="false" cascade="persist">
+            <column name="awayTeamID" sql-type="int" not-null="true"/>
+        </many-to-one>
+    </class>
+    <class name="Team" table="Team">
+        <id name="id" column="TeamID">
+            <generator class="identity"/>
+        </id>
+        <property name="teamName" column="TeamName" unique="true">
             <type name="org.hibernate.type.EnumType">
-                <param name="enumClass">com.jameskohli.Team</param>
+                <param name="enumClass">com.jameskohli.TeamName</param>
                 <param name="type">12</param>
             </type>
         </property>
-        <property name="awayTeam" column="AwayTeam">
-            <type name="org.hibernate.type.EnumType">
-                <param name="enumClass">com.jameskohli.Team</param>
-                <param name="type">12</param>
-            </type>
-        </property>
+        <property name="elo" type="integer" column="Elo"/>
     </class>
 </hibernate-mapping>

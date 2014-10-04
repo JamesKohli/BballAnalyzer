@@ -19,7 +19,7 @@ public class TeamSeasonScraper {
     Logger logger = LoggerFactory.getLogger(TeamSeasonScraper.class);
 
     //** scrape a basketball reference season results page for a given team and year*/
-    public void scrape(Team t, int year){
+    public void scrape(TeamName t, int year){
         String url = "http://www.basketball-reference.com/teams/" + t + "/" + year + "_games.html";
 
         tries = 0;

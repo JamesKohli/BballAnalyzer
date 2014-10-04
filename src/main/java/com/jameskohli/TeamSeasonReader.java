@@ -1,9 +1,7 @@
 package com.jameskohli;
 
 import au.com.bytecode.opencsv.CSVReader;
-import org.hibernate.Session;
 import org.joda.time.DateTime;
-import org.joda.time.Years;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
@@ -13,6 +11,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -31,8 +30,9 @@ public class TeamSeasonReader {
 
 
     /** This reads a team results csv for a year from basketball-reference.com and returns the home games in a list.*/
-    public List<Game> read(Team t, int year) {
+    public List<Game> read(TeamName t, int year, Map<TeamName, Team> teams) {
 
+        Team homeTeam = teams.get(t);
         results = new ArrayList<Game>();
         //build the name of the csv file we want to read
         String file = "TeamSeasons/" + year + "_" + t + fileType;
@@ -42,7 +42,7 @@ public class TeamSeasonReader {
             csvReader = new CSVReader(new FileReader(file));
             String [] nextLine;
             while ((nextLine = csvReader.readNext()) != null) {
-                parseLine(nextLine, t);
+                parseLine(nextLine, homeTeam, teams);
             }
         } catch (Exception e) {
             logger.error("Couldn't read file " + file, e);
@@ -52,15 +52,15 @@ public class TeamSeasonReader {
 
     /**Read a line of a team statistic csv file. If it's valid, turn it into a game. An example CSV file could be found here:
      * http://www.basketball-reference.com/teams/SAS/2014_games.html#teams_games::none*/
-    private void parseLine(String[] nextLine, Team t) {
+    private void parseLine(String[] nextLine, Team homeTeam, Map<TeamName, Team> teams) {
         if (nextLine[0].equals("G") | nextLine[5].equals("@")){return;}
         try {
-            Team awayTeam = Team.convertLongName(nextLine[AWAY_TEAM_COLUMN]);
+            Team awayTeam = teams.get(TeamName.convertLongName(nextLine[AWAY_TEAM_COLUMN]));
             DateTimeFormatter fmt = DateTimeFormat.forPattern("EEE MMM dd yyyy");
 
-            Game g = new Game(t, awayTeam, Integer.parseInt(nextLine[HOME_TEAM_SCORE_COLUMN]), Integer.parseInt(nextLine[AWAY_TEAM_SCORE_COLUMN]), DateTime.parse(nextLine[1], fmt));
+            Game g = new Game(homeTeam, awayTeam, Integer.parseInt(nextLine[HOME_TEAM_SCORE_COLUMN]), Integer.parseInt(nextLine[AWAY_TEAM_SCORE_COLUMN]), DateTime.parse(nextLine[1], fmt));
             results.add(g);
-        } catch (Team.TeamNotFoundException e) {
+        } catch (TeamName.TeamNotFoundException e) {
             logger.error("Couldn't find team " + nextLine[AWAY_TEAM_COLUMN], e);
         }
 
