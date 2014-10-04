@@ -1,5 +1,6 @@
 package com.jameskohli;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
@@ -52,6 +53,13 @@ public class BballAnalyzer {
             TeamSeasonReader tsr = new TeamSeasonReader();
             for (Team t : Team.values()) {
                 List<Game> games = tsr.read(t, year);
+                for (Game g : games){
+                    Session s = sessionFactory.openSession();
+                    s.beginTransaction();
+                    s.save(g);
+                    s.getTransaction().commit();
+                    s.close();
+                }
             }
         }
     }

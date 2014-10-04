@@ -25,6 +25,10 @@ public class TeamSeasonReader {
     private List<Game> results;
     final String fileType = ".csv";
 
+    final int AWAY_TEAM_COLUMN = 6;
+    final int HOME_TEAM_SCORE_COLUMN = 9;
+    final int AWAY_TEAM_SCORE_COLUMN = 10;
+
 
     /** This reads a team results csv for a year from basketball-reference.com and returns the home games in a list.*/
     public List<Game> read(Team t, int year) {
@@ -49,15 +53,15 @@ public class TeamSeasonReader {
     /**Read a line of a team statistic csv file. If it's valid, turn it into a game. An example CSV file could be found here:
      * http://www.basketball-reference.com/teams/SAS/2014_games.html#teams_games::none*/
     private void parseLine(String[] nextLine, Team t) {
-        if (nextLine[0].equals("G") | nextLine[3].equals("@")){return;}
+        if (nextLine[0].equals("G") | nextLine[5].equals("@")){return;}
         try {
-            Team awayTeam = Team.convertLongName(nextLine[4]);
+            Team awayTeam = Team.convertLongName(nextLine[AWAY_TEAM_COLUMN]);
             DateTimeFormatter fmt = DateTimeFormat.forPattern("EEE MMM dd yyyy");
 
-            Game g = new Game(t, awayTeam, Integer.parseInt(nextLine[7]), Integer.parseInt(nextLine[8]), DateTime.parse(nextLine[1], fmt));
+            Game g = new Game(t, awayTeam, Integer.parseInt(nextLine[HOME_TEAM_SCORE_COLUMN]), Integer.parseInt(nextLine[AWAY_TEAM_SCORE_COLUMN]), DateTime.parse(nextLine[1], fmt));
             results.add(g);
         } catch (Team.TeamNotFoundException e) {
-            logger.error("Couldn't find team " + nextLine[4], e);
+            logger.error("Couldn't find team " + nextLine[AWAY_TEAM_COLUMN], e);
         }
 
     }

@@ -8,7 +8,7 @@
         <id name="id" column="GameID">
             <generator class="identity"/>
         </id>
-        <property name="dateTime" type="timestamp" column="EventDate"/>
+        <property name="dateTime" type="org.joda.time.contrib.hibernate.PersistentDateTime" column="EventDate"/>
         <property name="homeScore" type="integer" column="HomeScore"/>
         <property name="awayScore" type="integer" column="AwayScore"/>
     </class>

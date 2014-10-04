@@ -70,6 +70,10 @@ public class Game implements Comparable<Game> {
         this.dateTime = dateTime;
     }
 
+    public Game(){
+
+    }
+
     @Override
     public int compareTo(Game o) {
         if (this.dateTime.isAfter(o.dateTime)){
