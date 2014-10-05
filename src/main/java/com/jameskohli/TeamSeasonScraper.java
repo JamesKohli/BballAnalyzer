@@ -29,6 +29,7 @@ public class TeamSeasonScraper {
                 Document doc = Jsoup.connect(url).get();
 
                 Element table = doc.getElementById("teams_games");
+                Element table2 = doc.getElementById("teams_games_playoffs");
 
                 PrintWriter pw = new PrintWriter("TeamSeasons/" + year + "_" + t + ".csv");
                 for (Element tr : table.select("tr")) {
@@ -39,6 +40,19 @@ public class TeamSeasonScraper {
                         pw.print(th.text().replace(",", "") + ",");
                     }
                     pw.println();
+                }
+
+                if (table2 != null) {
+                    logger.info("Reading playoffs for team " + t);
+                    for (Element tr : table2.select("tr")) {
+                        for (Element td : tr.select("td")) {
+                            pw.print(td.text().replace(",", "") + ",");
+                        }
+                        for (Element th : tr.select("th")) {
+                            pw.print(th.text().replace(",", "") + ",");
+                        }
+                        pw.println();
+                    }
                 }
 
                 pw.close();

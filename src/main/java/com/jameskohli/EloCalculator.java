@@ -19,7 +19,7 @@ public class EloCalculator {
 
     Logger logger = LoggerFactory.getLogger(EloCalculator.class);
     private static final int K = 10;
-    private static final int HOME_FIELD_ADVANTAGE = 25;
+    private static final int HOME_FIELD_ADVANTAGE = 70;
     private int rn1;
     private int rn2;
 
@@ -32,7 +32,7 @@ public class EloCalculator {
     public EloCalculator(int homeElo, int awayElo, boolean homeVictory){
         logger.info("Calculating ELO for game home team {} away team {} home victory {}", homeElo, awayElo, homeVictory);
         rn1 = calculate(homeElo, awayElo, true, homeVictory);
-        rn2 = calculate(awayElo, homeElo, false, !homeVictory);
+        rn2 = awayElo + homeElo - rn1;
         logger.info("Resulting elos are home team {} away team {}", rn1, rn2);
     }
 
@@ -46,8 +46,7 @@ public class EloCalculator {
     //dr = difference in ratings + home field advantage (100?)
     private int calculate(int ro1, int ro2, boolean isHome, boolean victory){
         double dr = ro1 - ro2;
-        if (isHome) {dr += HOME_FIELD_ADVANTAGE;}
-        else {dr -= HOME_FIELD_ADVANTAGE;}
+        dr += HOME_FIELD_ADVANTAGE;
 
         double we = 1 / ( Math.pow(10,-dr/400) + 1);
 

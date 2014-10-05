@@ -15,6 +15,7 @@ public class Team{
 
     private TeamName teamName;
     private int elo;
+    private final static int STARTING_ELO = 1200;
 
     final static Logger logger = LoggerFactory.getLogger(Team.class);
 
@@ -40,7 +41,7 @@ public class Team{
         for (TeamName tn : TeamName.values()){
             Team t = new Team();
             t.setTeamName(tn);
-            t.setElo(1500);
+            t.setElo(STARTING_ELO);
             teams.put(tn, t);
         }
         return teams;
