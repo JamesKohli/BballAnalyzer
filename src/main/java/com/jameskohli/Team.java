@@ -13,19 +13,10 @@ import java.util.Map;
 /**Each team that is or had been in the league*/
 public class Team{
 
-    private int id;
     private TeamName teamName;
     private int elo;
 
     final static Logger logger = LoggerFactory.getLogger(Team.class);
-
-    public int getId(){
-        return id;
-    }
-
-    public void setId(int id){
-        this.id = id;
-    }
 
     public TeamName getTeamName() {
         return teamName;

@@ -6,20 +6,28 @@ import org.joda.time.DateTime;
  */
 public class Game implements Comparable<Game> {
 
-    private Long id;
-
+    private long id;
+    private String uniqueId;
     private Team homeTeam;
     private Team awayTeam;
     private int homeScore;
     private int awayScore;
     private DateTime dateTime;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUniqueId() {
+        return homeTeam.getTeamName() + "_" + awayTeam.getTeamName() + "_" + dateTime;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
     }
 
     public Team getHomeTeam() {

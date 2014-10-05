@@ -1,15 +1,13 @@
 package com.jameskohli;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by James on 6/17/2014.
@@ -45,21 +43,11 @@ public class BballAnalyzer {
         if (years.isEmpty()){
             years.add(2014);
         }
+        Collections.sort(years);
 
         //Create and save the list of teams
         teams = Team.createTeamMap();
-        logger.info("Persisiting teams to database");
-        for (Team t: teams.values()){
-                try{
-                    Session s = sessionFactory.openSession();
-                    s.beginTransaction();
-                    s.save(t);
-                    s.getTransaction().commit();
-                    s.close();}
-                catch (Exception e){
-                    logger.error("Error saving team " + t, e);
-                }
-        }
+        writeTeamElos();
 
         //download the appropriate years
         if (download){
@@ -78,13 +66,46 @@ public class BballAnalyzer {
                     try{
                         Session s = sessionFactory.openSession();
                         s.beginTransaction();
-                        s.save(g);
+                        s.saveOrUpdate(g);
                         s.getTransaction().commit();
                         s.close();}
                     catch (Exception e){
                         logger.error("Error saving game " + g, e);
                     }
                 }
+            }
+        }
+
+        //Get the list of games
+        Session s = sessionFactory.openSession();
+        String hql = "FROM Game WHERE EventDate >= '1/1/" + years.get(0) + "' AND EventDate <= '12/31/" + years.get(years.size()-1) + "'";
+        logger.info("Running select {}", hql);
+        Query query = s.createQuery(hql);
+        List<Game> results = query.list();
+        s.close();
+        Collections.sort(results);
+
+        for (Game g : results){
+            boolean homeVictory = g.getHomeScore() > g.getAwayScore();
+            EloCalculator elo = new EloCalculator(teams.get(g.getHomeTeam().getTeamName()).getElo(), teams.get(g.getAwayTeam().getTeamName()).getElo(), homeVictory);
+            teams.get(g.getHomeTeam().getTeamName()).setElo(elo.getRn1());
+            teams.get(g.getAwayTeam().getTeamName()).setElo(elo.getRn2());
+        }
+
+        writeTeamElos();
+    }
+
+    private static void writeTeamElos() {
+        logger.info("Persisting teams to database");
+        for (Team t: teams.values()){
+            try{
+                Session s = sessionFactory.openSession();
+                s.beginTransaction();
+                s.saveOrUpdate(t);
+                s.getTransaction().commit();
+                s.close();}
+            catch (Exception e){
+                logger.error("Error saving team " + t, e);
             }
         }
     }
@@ -97,7 +118,7 @@ public class BballAnalyzer {
             try {
                 logger.info("Completed team " + t);
                 //Pause for a little to be good web citizens, don't want to hit the site with many requests at a time
-                Thread.sleep(30000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
