@@ -27,7 +27,7 @@ public class Tests {
 
     @Test
     public void testEloCalculatorHomeWinUneven(){
-        EloCalculator calc = new EloCalculator(1450, 1350, true);
+        EloCalculator calc = new EloCalculator(1450, 1350, false, true);
 
         assertEquals(1452, calc.getRn1());
         assertEquals(1346, calc.getRn2());
@@ -35,7 +35,7 @@ public class Tests {
 
     @Test
     public void testEloCalculatorHomeLossUneven(){
-        EloCalculator calc = new EloCalculator(1350, 1450, false);
+        EloCalculator calc = new EloCalculator(1350, 1450, false, false);
 
         assertEquals(1345, calc.getRn1());
         assertEquals(1453, calc.getRn2());

@@ -39,6 +39,7 @@ public class TeamSeasonScraper {
                     for (Element th : tr.select("th")){
                         pw.print(th.text().replace(",", "") + ",");
                     }
+                    pw.print("False,");
                     pw.println();
                 }
 
@@ -51,6 +52,7 @@ public class TeamSeasonScraper {
                         for (Element th : tr.select("th")) {
                             pw.print(th.text().replace(",", "") + ",");
                         }
+                        pw.print("True,");
                         pw.println();
                     }
                 }

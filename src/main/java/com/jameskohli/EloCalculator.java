@@ -19,6 +19,7 @@ public class EloCalculator {
 
     Logger logger = LoggerFactory.getLogger(EloCalculator.class);
     private static final int K = 10;
+    private static final int PLAYOFF_MULTIPLIER = 2;
     private static final int HOME_FIELD_ADVANTAGE = 70;
     private int rn1;
     private int rn2;
@@ -27,11 +28,11 @@ public class EloCalculator {
      * The ELO calculator for a match.
      * @param homeElo The ELO of the first team
      * @param awayElo The ELO score of the second team
-     * @param homeVictory true if first team won, false if not
+     * @param isPlayoffs true if first team won, false if not
      */
-    public EloCalculator(int homeElo, int awayElo, boolean homeVictory){
+    public EloCalculator(int homeElo, int awayElo, boolean isPlayoffs, boolean homeVictory){
         logger.info("Calculating ELO for game home team {} away team {} home victory {}", homeElo, awayElo, homeVictory);
-        rn1 = calculate(homeElo, awayElo, true, homeVictory);
+        rn1 = calculate(homeElo, awayElo, isPlayoffs, homeVictory);
         rn2 = awayElo + homeElo - rn1;
         logger.info("Resulting elos are home team {} away team {}", rn1, rn2);
     }
@@ -44,7 +45,7 @@ public class EloCalculator {
     //We: expected result
     //We = 1/(10^(-dr/400) + 1)
     //dr = difference in ratings + home field advantage (100?)
-    private int calculate(int ro1, int ro2, boolean isHome, boolean victory){
+    private int calculate(int ro1, int ro2, boolean isPlayoffs, boolean victory){
         double dr = ro1 - ro2;
         dr += HOME_FIELD_ADVANTAGE;
 
@@ -53,7 +54,9 @@ public class EloCalculator {
         double w;
         if (victory) {w = 1;}
         else {w = 0;}
-        double rn = ro1 + K * (w - we );
+        int tempK = K;
+        if (isPlayoffs) {tempK = PLAYOFF_MULTIPLIER * K;}
+        double rn = ro1 + tempK * (w - we );
         return (int) rn;
     }
 

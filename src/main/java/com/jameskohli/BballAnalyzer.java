@@ -87,7 +87,7 @@ public class BballAnalyzer {
 
         for (Game g : results){
             boolean homeVictory = g.getHomeScore() > g.getAwayScore();
-            EloCalculator elo = new EloCalculator(teams.get(g.getHomeTeam().getTeamName()).getElo(), teams.get(g.getAwayTeam().getTeamName()).getElo(), homeVictory);
+            EloCalculator elo = new EloCalculator(teams.get(g.getHomeTeam().getTeamName()).getElo(), teams.get(g.getAwayTeam().getTeamName()).getElo(), g.getIsPlayoffs(), homeVictory);
             teams.get(g.getHomeTeam().getTeamName()).setElo(elo.getRn1());
             teams.get(g.getAwayTeam().getTeamName()).setElo(elo.getRn2());
         }

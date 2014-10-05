@@ -27,6 +27,7 @@ public class TeamSeasonReader {
     final int AWAY_TEAM_COLUMN = 6;
     final int HOME_TEAM_SCORE_COLUMN = 9;
     final int AWAY_TEAM_SCORE_COLUMN = 10;
+    final int IS_PLAYOFFS_COLUMN = 15;
 
 
     /** This reads a team results csv for a year from basketball-reference.com and returns the home games in a list.*/
@@ -59,6 +60,7 @@ public class TeamSeasonReader {
             DateTimeFormatter fmt = DateTimeFormat.forPattern("EEE MMM dd yyyy");
 
             Game g = new Game(homeTeam, awayTeam, Integer.parseInt(nextLine[HOME_TEAM_SCORE_COLUMN]), Integer.parseInt(nextLine[AWAY_TEAM_SCORE_COLUMN]), DateTime.parse(nextLine[1], fmt));
+            g.setIsPlayoffs(Boolean.valueOf(nextLine[IS_PLAYOFFS_COLUMN]));
             results.add(g);
         } catch (TeamName.TeamNotFoundException e) {
             logger.error("Couldn't find team " + nextLine[AWAY_TEAM_COLUMN], e);

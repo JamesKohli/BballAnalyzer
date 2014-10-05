@@ -15,6 +15,7 @@
         <many-to-one name="awayTeam" class="Team" lazy="false" cascade="persist">
             <column name="awayTeamID" sql-type="int" not-null="true"/>
         </many-to-one>
+        <property name="isPlayoffs" column="IsPlayoffs"/>
     </class>
     <class name="Team" table="Team">
         <id name="teamName" column="TeamID">

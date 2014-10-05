@@ -13,6 +13,15 @@ public class Game implements Comparable<Game> {
     private int homeScore;
     private int awayScore;
     private DateTime dateTime;
+    private boolean isPlayoffs;
+
+    public boolean getIsPlayoffs() {
+        return isPlayoffs;
+    }
+
+    public void setIsPlayoffs(boolean isPlayoffs) {
+        this.isPlayoffs = isPlayoffs;
+    }
 
     public long getId() {
         return id;
